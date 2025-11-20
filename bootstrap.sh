@@ -7,7 +7,7 @@ YELLOW="\033[1;33m"
 RESET="\033[0m"
 
 # Padding width for aligned output
-PAD_WIDTH=30
+PAD_WIDTH=40
 
 # Universal function for any task
 do_task() {
@@ -36,11 +36,10 @@ do_task() {
 clear
 # Update package lists
 do_task "Updating packages" "pkg update"
-do_task "Upgrading packages (waiting 9s)" 'sleep 2 && pkg upgrade -y -o Dpkg::Options::="--force-confold"'
+do_task "Upgrading packages (waiting 9s)" 'sleep 1 && pkg upgrade -y -o Dpkg::Options::="--force-confold"'
 
-sleep 1 # 2 second pause 
+sleep 2 # 2 second pause 
 
-clear # clear cache
 # Installing Necessary Packages
 do_task "Installing x11-repo" "apt install -y x11-repo"
 do_task "Installing termux-x11" "apt install -y termux-x11"
@@ -53,4 +52,3 @@ do_task "Installing nano" "apt install -y nano"
 
 # Clear cache
 pkg clean
-clear
